@@ -38,9 +38,9 @@ Let's take this journey together throughout the following tutorial exercises to 
 
 ## Environment Details
 
-This tutorial makes use of a [Kubernetes](https://kubernetes.io) environment, provided by [Kind](https://kind.sigs.k8s.io/), to be able to demonstrate how workload identity can be achieved when working across cloud environments. While Kubernetes is being used from an implementation perspective, the concepts are not dependant solely on this type of architecture.
+This tutorial makes use of a [Kubernetes](https://kubernetes.io) environment, provided by [Kind](https://kind.sigs.k8s.io/), to be able to demonstrate how workload identity can be achieved when working across cloud environments. While Kubernetes is being used from an implementation perspective, the concepts are not dependent solely on this type of architecture.
 
-Each participant will have access to a cluster of their own to work though the various exercises of this tutorial. Additional information including how to gain access to the environment can be found in the next section, Accessing the environment.
+The next section details how to set up the Kind cluster environment on your local computer. 
 
 [Next Tutorial - Environment Setup](tutorial1.md)
 

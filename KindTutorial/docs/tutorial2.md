@@ -8,14 +8,16 @@ Bob's application and the remainder of the resources associated with the tutoria
 
 ```shell
 cd $TUTORIAL_ROOT
-git clone https://github.com/sabre1041/cloudnativesecuritycon-workload-identity-tutorial
+git clone -b add_kind https://github.com/maia-iyer/cloudnativesecuritycon-workload-identity-tutorial
 ```
+TODO change above to official repo at the end
 
 Now, change into the project repository directory:
 
 ```shell
-cd $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial
+cd $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/KindTutorial
 ```
+TODO change this in previous tutorial
 
 ## Deploy the Application
 
