@@ -1,5 +1,4 @@
 global:
-  openshift: true
   spire:
     recommendations:
       enabled: true
@@ -14,8 +13,6 @@ global:
       organization: Red Hat
       commonName: common-name
 spire-server:
-  ingress:
-    enabled: true
   tools:
     kubectl:
       image:
@@ -36,8 +33,6 @@ spiffe-oidc-discovery-provider:
   tls:
     spire:
       enabled: false
-  ingress:
-    enabled: true
     # tlsSecret: tls-cert
   tools:
     kubectl:
