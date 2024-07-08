@@ -1,6 +1,6 @@
-# Tutorial 1 - Environment Access
+# Tutorial 1 - Environment Setup
 
-For the purpose of this tutorial, each participant will make use of an Kubernetes based OpenShift environment to work through the exercises. Access to environments, including the endpoints and credentials  will be provided by the instructors.
+For the purpose of this tutorial, each participant will make use of an Kubernetes based environment to work through the exercises. Access to environments, including the endpoints and credentials  will be provided by the instructors.
 
 ## Exploring the Environment
 
