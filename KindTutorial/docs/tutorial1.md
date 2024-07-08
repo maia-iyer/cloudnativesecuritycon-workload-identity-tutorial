@@ -25,13 +25,6 @@ podman machine init
 podman machine start
 ```
 
-Then set the `DOCKER_HOST` environment variable:
-
-```shell
-export DOCKER_HOST=unix://$(podman info --format '{{.Host.RemoteSocket.Path}}')
-```
-TODO is the above necessary?
-
 Then, we can create a Kind cluster:
 
 ```shell
