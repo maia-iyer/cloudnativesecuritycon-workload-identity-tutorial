@@ -41,7 +41,7 @@ First, create a `Namespace` called `workload-identity-tutorial` to contain all o
 Apply the manifest file to create the Namespace
 
 ```shell
-kubectl apply -f $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/resources/baseline/namespace.yaml
+kubectl apply -f $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/KindTutorial/resources/baseline/namespace.yaml
 ```
 
 ### Deploy the MySQL Database
@@ -51,7 +51,7 @@ Records associated with the application are stored within a MySQL relational dat
 Deploy the database related resources using the following command:
 
 ```shell
-kubectl apply -f $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/resources/baseline/db.yaml
+kubectl apply -f $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/KindTutorial/resources/baseline/db.yaml
 ```
 
 Confirm the database is running by listing the pods in the `workload-identity-tutorial` namespace.
@@ -72,7 +72,7 @@ db-6b7d6788cc-f4l8c   1/1     Running   0          29s
 The next step is to deploy the resources associated with the Python application located in the `py.yaml` file. To inject the location of the ingress subdomain that is stored in the `APP_DOMAIN` into the `Ingress` resource, the `envsubst` utility will be used. Ensure this variable is still defined and execute the following command to deploy the Python application to the `workload-identity-tutorial` namespace:
 
 ```shell
-envsubst < $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/resources/baseline/py.yaml | kubectl apply -f - 
+envsubst < $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/KindTutorial/resources/baseline/py.yaml | kubectl apply -f - 
 ```
 
 Confirm that the Python application named `py` deployed successfully to the `workload-identity-tutorial` namespace:
