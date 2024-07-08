@@ -15,7 +15,7 @@ Once a JWT has been obtained from SPIRE, the JWT can then be used to authenticat
 To better understand how identities are obtained from SPIRE and used to obtain resources from Vault, create a new Deployment called `spire-debug` in the `workload-identity-tutorial` namespace to enable debugging the interaction with each of these components.
 
 ```shell
-envsubst < $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/resources/secure/apps/spire-debug.yaml | kubectl apply -f -
+envsubst < $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/KindTutorial/resources/secure/apps/spire-debug.yaml | kubectl apply -f -
 ```
 
 This Deployment enables the use of SPIRE identities by mounting the SPIRE socket from the `csi` volume as shown below:
@@ -130,7 +130,7 @@ exit
 Remove the debugging deployment to clean up the testing resources from the `workload-identity-tutorial` namespace:
 
 ```shell
-kubectl delete -f $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/resources/secure/apps/spire-debug.yaml
+kubectl delete -f $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/KindTutorial/resources/secure/apps/spire-debug.yaml
 ```
 
 Proceed to the next tutorial exercise to implement the changes necessary within the Python application.

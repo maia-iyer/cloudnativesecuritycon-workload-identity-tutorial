@@ -22,10 +22,16 @@ Confirm Vault is running in the `vault` namespace.
 kubectl get pods -n vault
 ```
 
+Now let's port-forward the Vault. Open a new terminal and run the following:
+
+```shell
+kubectl port-forward -n vault svc/vault 8200:8200
+```
+
 Next, obtain the location of the Vault instance and set the `VAULT_ADDR` environment variable by executing the following command:
 
 ```shell
-export VAULT_ADDR=https://vault-vault.$APP_DOMAIN
+export VAULT_ADDR=https://localhost:8200
 ```
 
 Confirm that the Vault health endpoint returns a successful response
