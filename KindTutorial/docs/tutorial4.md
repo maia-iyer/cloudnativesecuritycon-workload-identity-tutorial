@@ -90,7 +90,7 @@ Then open a new terminal and port-forward the Tornjak frontend service.
 kubectl port-forward -n spire-server svc/spire-tornjak-frontend 3000:3000
 ```
 
-Launch a browser and navigate to the URL obtained by the output from the previous command to access Tornjak. The landing page provides a list of the nodes in the Kubernetes cluster. By clicking on the _Entries_ button on the navigation bar lists the workloads that have identities that have been issued by SPIRE. These identities will be key in Kaya's longterm architecture which will enable accessing protected resources stored within Vault which will be deployed and configured in the next tutorial exercise.
+Launch a browser and navigate to the URL `http://localhost:3000` to access Tornjak. The landing page provides a list of the nodes in the Kubernetes cluster. By clicking on the _Entries_ button on the navigation bar lists the workloads that have identities that have been issued by SPIRE. These identities will be key in Kaya's longterm architecture which will enable accessing protected resources stored within Vault which will be deployed and configured in the next tutorial exercise.
 
 [Previous Tutorial - Identifying Security Challenges](tutorial3.md)
 

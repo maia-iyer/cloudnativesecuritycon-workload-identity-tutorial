@@ -7,13 +7,13 @@ HashiCorp Vault will be used as a solution to to manage the storage of sensitive
 First, create a new namespace called `vault` that will be used to contain the resources associated with the deployment of vault.
 
 ```shell
-kubectl apply -f $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/resources/secure/vault/namespace.yaml
+kubectl apply -f $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/KindTutorial/resources/secure/vault/namespace.yaml
 ```
 
 Deploy Vault to the `vault` namespace. Ensure the `APP_DOMAIN` environment variable is still defined so that the host property of the `Ingress` can be configured appropriately. 
 
 ```shell
-envsubst < $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/resources/secure/vault/vault.yaml | kubectl apply -f - 
+envsubst < $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/KindTutorial/resources/secure/vault/vault.yaml | kubectl apply -f - 
 ```
 
 Confirm Vault is running in the `vault` namespace. 
@@ -80,7 +80,7 @@ A script is available to automate the configuration of Vault to support accessin
 Enable these configurations by executing the script called `vault-oidc.sh`
 
 ```shell
-$TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/resources/secure/vault/vault-oidc.sh
+$TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/KindTutorial/resources/secure/vault/vault-oidc.sh
 ```
 
 Confirm the policy called `dbpolicy` has been pushed to Vault:
@@ -110,7 +110,7 @@ Now that Vault has been deployed and configured, Kaya recommends transitioning f
 First, obtain the configuration file containing the database credentials from the ConfigMap called `db-config`:
 
 ```shell
-oc get cm -n workload-identity-tutorial db-config -o jsonpath='{ .data.config\.ini }' > $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/resources/secure/vault/config.ini
+kubectl get cm -n workload-identity-tutorial db-config -o jsonpath='{ .data.config\.ini }' > $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/KindTutorial/resources/secure/vault/config.ini
 ```
 
 Vault accepts configurations that are stored in JSON format and since this configuration resource is in `.ini` format instead, the contents can be encoded in base64 format and stored within Vault.
@@ -118,7 +118,7 @@ Vault accepts configurations that are stored in JSON format and since this confi
 Encode the contents of the `config.ini` file in a variable called `SHA64`
 
 ```shell
-SHA64=$(openssl base64 -in $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/resources/secure/vault/config.ini)
+SHA64=$(openssl base64 -in $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/KindTutorial/resources/secure/vault/config.ini)
 ```
 
 Utilize the [KV Secrets Engine](https://developer.hashicorp.com/vault/docs/secrets/kv) within vault to securely store the configuration:
