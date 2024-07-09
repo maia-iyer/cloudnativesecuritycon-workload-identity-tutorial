@@ -45,7 +45,7 @@ spec:
           - name: ROLE
             value: "dbrole"
           - name: VAULT_ADDR
-            value: "$VAULT_ADDR" 
+            value: "http://host.docker.internal:8200" 
           volumeMounts:
             - name: spiffe-workload-api
               mountPath: /run/spire/sockets
@@ -96,23 +96,3 @@ spec:
       targetPort: 5000
 status:
   loadBalancer: {}
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: py
-  namespace: workload-identity-tutorial
-  annotations:
-    route.openshift.io/termination: edge
-spec:
-  rules:
-  - host: py.$APP_DOMAIN
-    http:
-      paths:
-      - pathType: Prefix
-        path: /
-        backend:
-          service:
-            name: py
-            port:
-              number: 8000
