@@ -31,7 +31,7 @@ kubectl port-forward -n vault svc/vault 8200:8200 2>&1 >/dev/null &
 Next, obtain the location of the Vault instance and set the `VAULT_ADDR` environment variable by executing the following command:
 
 ```shell
-export VAULT_ADDR=https://localhost:8200
+export VAULT_ADDR=http://localhost:8200
 ```
 
 Confirm that the Vault health endpoint returns a successful response

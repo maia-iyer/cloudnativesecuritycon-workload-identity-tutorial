@@ -8,7 +8,7 @@ ROOT_TOKEN=${ROOT_TOKEN:-$2}
 VAULT_ADDR=${VAULT_ADDR:-$3}
 export VAULT_ADDR=$VAULT_ADDR
 export ROOT_TOKEN=$ROOT_TOKEN
-export OIDC_URL=https://localhost:8001
+export OIDC_URL=http://localhost:8001
 # remove any previously set VAULT_TOKEN, that overrides ROOT_TOKEN in Vault client
 export VAULT_TOKEN=
 
