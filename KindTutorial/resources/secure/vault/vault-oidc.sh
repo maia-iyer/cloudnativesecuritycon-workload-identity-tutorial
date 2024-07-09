@@ -8,7 +8,7 @@ ROOT_TOKEN=${ROOT_TOKEN:-$2}
 VAULT_ADDR=${VAULT_ADDR:-$3}
 export VAULT_ADDR=$VAULT_ADDR
 export ROOT_TOKEN=$ROOT_TOKEN
-export OIDC_URL=http://host.docker.internal:8001
+export OIDC_URL=http://host.docker.internal:8001/keys
 # remove any previously set VAULT_TOKEN, that overrides ROOT_TOKEN in Vault client
 export VAULT_TOKEN=
 
@@ -49,7 +49,7 @@ setupVault()
 
 
   # Connect OIDC - Set up our OIDC Discovery URL,
-  vault write auth/jwt/config oidc_discovery_url=$OIDC_URL default_role=“$ROLE”
+  vault write auth/jwt/config jwks_url=$OIDC_URL default_role=“$ROLE”
   RT=$?
   if [ $RT -ne 0 ] ; then
      echo " 'vault write auth/jwt/config oidc_discovery_url=' command failed"
