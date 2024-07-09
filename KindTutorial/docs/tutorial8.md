@@ -12,6 +12,16 @@ By leveraging SPIFFE and SPIRE, we demonstrated how to secure an application by 
 
 We hope this tutorial provides you with a pattern example that can significantly harden the security posture of your deployed application.
 
+## Cleanup
+
+Cleanup the port-forward commands running in the background:
+
+```
+kill $(ps aux | grep 'kubectl1.27.4 port-forward'  | awk '{print $2}')
+```
+
+
+
 ## Links
 
 ### Resources and Relevant Technologies
