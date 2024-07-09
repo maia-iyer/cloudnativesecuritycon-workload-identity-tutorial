@@ -82,7 +82,7 @@ First open a new terminal and port-forward the Tornjak backend service.
 kubectl port-forward -n spire-server svc/spire-tornjak-backend 10000:10000 2>&1 >/dev/null &
 ```
 
-Then verify you can access the backend API by navigating to `http://localhost:10000` in your browser. You should receive a message `Welcome to the Tornjak Backend!`. 
+Then verify you can access the backend API by navigating to `http://localhost:10000` in your browser or curling the URL. You should receive a message `Welcome to the Tornjak Backend!`. 
 
 Then open a new terminal and port-forward the Tornjak frontend service. 
 

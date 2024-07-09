@@ -25,7 +25,7 @@ kubectl get pods -n vault
 Now let's port-forward the Vault. Open a new terminal and run the following:
 
 ```shell
-kubectl port-forward -n vault svc/vault 8200:8200
+kubectl port-forward -n vault svc/vault 8200:8200 2>&1 >/dev/null &
 ```
 
 Next, obtain the location of the Vault instance and set the `VAULT_ADDR` environment variable by executing the following command:
