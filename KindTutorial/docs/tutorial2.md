@@ -2,23 +2,6 @@
 
 Kaya has thoughts about how to harden Bob's application, but she first would like to see the application firsthand within one of her Kubernetes clusters (the same cluster you just accessed in the prior tutorial). During this tutorial, obtain the resources associated with Bob's application and deploy the application within the Kubernetes environment. 
 
-## Obtain the Project Resources
-
-Bob's application and the remainder of the resources associated with the tutorial are located in the accompanying git repository. Ensure that you are in the directory represented by the `TUTORIAL_ROOT` environment and clone the repository to this location:
-
-```shell
-cd $TUTORIAL_ROOT
-git clone -b add_kind https://github.com/maia-iyer/cloudnativesecuritycon-workload-identity-tutorial
-```
-TODO change above to official repo at the end
-
-Now, change into the project repository directory:
-
-```shell
-cd $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/KindTutorial
-```
-TODO change this in previous tutorial
-
 ## Deploy the Application
 
 With the git repository cloned within the Web Terminal environment, the resources associated with Bob's application is contained within the `resources/baseline` directory and consists of the following:

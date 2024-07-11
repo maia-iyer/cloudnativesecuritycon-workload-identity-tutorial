@@ -30,7 +30,7 @@ git clone -b add_kind https://github.com/maia-iyer/cloudnativesecuritycon-worklo
 With the above installed, start a Podman machine with the following commands:
 
 ```shell
-podman machine init --rootful=true
+podman machine init --rootful=true --memory 4096
 podman machine start
 ```
 
