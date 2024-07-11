@@ -16,6 +16,15 @@ Please install the following utilities:
 - vault
 - envsubst
 
+## Obtain the code
+
+Navigate to the directory you wish to work in and run the following: 
+
+```shell
+export TUTORIAL_ROOT=$(pwd)
+git clone -b add_kind https://github.com/maia-iyer/cloudnativesecuritycon-workload-identity-tutorial
+```
+
 ## Create a Cluster
 
 With the above installed, start a Podman machine with the following commands:
@@ -28,7 +37,7 @@ podman machine start
 Then, we can create a Kind cluster:
 
 ```shell
-KIND_EXPERIMENTAL_PROVIDER=podman kind create cluster
+KIND_EXPERIMENTAL_PROVIDER=podman kind create cluster --config=$TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/KindTutorial/resources/cluster/cluster-config.yaml
 ```
 
 ### Interacting With the Environment
@@ -42,12 +51,6 @@ kubectl get nodes
 ```shell
 NAME                 STATUS   ROLES           AGE   VERSION
 kind-control-plane   Ready    control-plane   84s   v1.27.3
-```
-
-Navigate to a work directory and run the following command:
-
-```shell
-export TUTORIAL_ROOT=$(pwd)
 ```
 
 ### Ingress
