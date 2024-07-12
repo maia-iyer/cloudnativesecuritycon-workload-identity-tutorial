@@ -68,3 +68,23 @@ spec:
     - name: "8000"
       port: 8000
       targetPort: 5000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: py
+  namespace: workload-identity-tutorial
+  annotations:
+    route.openshift.io/termination: edge
+spec:
+  rules:
+  - host: py.$APP_DOMAIN
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: py
+            port:
+              number: 8000
