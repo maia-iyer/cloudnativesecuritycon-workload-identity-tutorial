@@ -59,38 +59,21 @@ NAME                      DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   N
 spire-agent               1         1         1       1            1           <none>          2m26s
 spire-spiffe-csi-driver   1         1         1       1            1           <none>          2m26s
 ```
-
-One of the components that must be exposed outside the cluster is an OIDC provider endpoint. Confirm the [JWKS](https://tools.ietf.org/html/rfc7517) endpoint that is used to verify the signatures that are included within JWT's is available. First open a new terminal, and port-forward the OIDC provider service:
-
-```shell
-kubectl port-forward -n spire-server svc/spire-spiffe-oidc-discovery-provider 8001:80 2>&1 >/dev/null &
-```
-
-Now the OIDC discovery provider should be available at `http://localhost:8001/keys`:
+One of the components that are exposed outside the cluster is an OIDC provider endpoint. Confirm the [JWKS](https://tools.ietf.org/html/rfc7517) endpoint that is used to verify the signatures that are included within JWT's is available:
 
 ```shell
-curl http://localhost:8001/keys
+curl https://$(kubectl get ingress -n spire-server  spire-spiffe-oidc-discovery-provider -o jsonpath='{ .spec.rules[*].host }')/keys
 ```
 
-The final component of the SPIFFE deployment that could be validated is that Tornjak is running and available. Tornjak is a project that enables the management of SPIFFE identities managed by SPIRE.
+The final component of the SPIFFE deployment that should be validated is that Tornjak is running and available. Tornjak is a project that enables the management of SPIFFE identities managed by SPIRE.
 
-Tornjak contains two components: a frontend and a backend. We need to port-forward both to access the frontend URL. 
-
-First open a new terminal and port-forward the Tornjak backend service. 
+Obtain the URL of the Tornjak endpoint:
 
 ```shell
-kubectl port-forward -n spire-server svc/spire-tornjak-backend 10000:10000 2>&1 >/dev/null &
+echo  https://$(kubectl get ingress -n spire-server  spire-tornjak-frontend -o jsonpath='{ .spec.rules[*].host }') 
 ```
 
-Then verify you can access the backend API by navigating to `http://localhost:10000` in your browser or curling the URL. You should receive a message `Welcome to the Tornjak Backend!`. 
-
-Then open a new terminal and port-forward the Tornjak frontend service. 
-
-```shell
-kubectl port-forward -n spire-server svc/spire-tornjak-frontend 3000:3000 2>&1 >/dev/null &
-```
-
-Launch a browser and navigate to the URL `http://localhost:3000` to access Tornjak. The landing page provides a list of the nodes in the Kubernetes cluster. By clicking on the _Entries_ button on the navigation bar lists the workloads that have identities that have been issued by SPIRE. These identities will be key in Kaya's longterm architecture which will enable accessing protected resources stored within Vault which will be deployed and configured in the next tutorial exercise.
+Launch a browser and navigate to the URL obtained by the output from the previous command to access Tornjak. The landing page provides a list of the nodes in the Kubernetes cluster. By clicking on the _Entries_ button on the navigation bar lists the workloads that have identities that have been issued by SPIRE. These identities will be key in Kaya's longterm architecture which will enable accessing protected resources stored within Vault which will be deployed and configured in the next tutorial exercise.
 
 [Previous Tutorial - Identifying Security Challenges](tutorial3.md)
 

@@ -71,13 +71,13 @@ NAME                  READY   STATUS    RESTARTS   AGE
 py-7dbcf96766-9f97q   1/1     Running   0          35s
 ```
 
-A service should have been created. Open another terminal and port-forward this service to localhost:
+With the database and python application both deployed to the cluster, obtain the URL for the `Ingress` resource to verify the application can be accessed from outside the cluster
 
 ```shell
-kubectl port-forward -n workload-identity-tutorial svc/py 8000:8000 2>&1 >/dev/null &
+echo https://$(kubectl -n workload-identity-tutorial get ingress py -o jsonpath='{ .spec.rules[*].host }')
 ```
 
-With the database and python application both deployed to the cluster, we may access the application at `localhost:8000`. Open a web browser and navigate to this URL. A result similar to the following containing a table populated with movie titles indicates the deployment was successful.
+Open a web browser and navigate to the URL provided as an output from the previous command. A result similar to the following containing a table populated with movie titles indicates the deployment was successful.
 
 ![Python Application](images/baseline-app.png)
 
