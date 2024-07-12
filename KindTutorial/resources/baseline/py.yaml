@@ -74,8 +74,6 @@ kind: Ingress
 metadata:
   name: py
   namespace: workload-identity-tutorial
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
   - host: py.$APP_DOMAIN

@@ -55,10 +55,11 @@ kind-control-plane   Ready    control-plane   84s   v1.27.3
 
 ### Ingress
 
-On cloud Kubernetes clusters, there would normally be an Ingress Controller that can be used to access externally-facing applications. As this is a local tutorial, the Kind cluster does not have such an ingress controller. Therefore, we will rely on port-forwarding to localhost. 
+On Kind we can deploy an Ingress controller to access application services running within the environment. 
 
 ```shell
-export APP_DOMAIN=example.com
+export APP_DOMAIN=$(ipconfig getifaddr en0).nip.io
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 ```
 
 With an understanding of the infrastructure that will be used for the tutorial along with setting up the initial configurations to work within this environment, we can get started. Proceed to the next tutorial where the we meet Bob and Kaya and learn more about Bob's application, its architecture, and how it can be deployed within the Kubernetes environment.
