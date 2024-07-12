@@ -75,7 +75,7 @@ metadata:
   name: py
   namespace: workload-identity-tutorial
   annotations:
-    route.openshift.io/termination: edge
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
   - host: py.$APP_DOMAIN
