@@ -17,8 +17,10 @@ We hope this tutorial provides you with a pattern example that can significantly
 Cleanup the port-forward commands running in the background:
 
 ```
-kill $(ps aux | grep 'kubectl1.27.4 port-forward'  | awk '{print $2}')
-```
+KIND_EXPERIMENTAL_PROVIDER=podman kind delete cluster
+podman machine stop
+podman machine delete
+``` TODO there may be something listening to port 80 in the background to be cleaned up
 
 
 
