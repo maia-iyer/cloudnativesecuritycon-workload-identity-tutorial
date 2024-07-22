@@ -4,7 +4,7 @@ global:
       enabled: true
     namespaces:
       create: true
-    ingressControllerType: "" # If not openshift, and want to expose services, set to a supported option [ingress-nginx]
+    ingressControllerType: "ingress-nginx" # If not openshift, and want to expose services, set to a supported option [ingress-nginx]
     # Update these
     clusterName: demo-1
     # trustDomain:
@@ -34,7 +34,7 @@ spiffe-oidc-discovery-provider:
   # the quick fix is to disable the TLS on SPIRE:
   tls:
     spire:
-      enabled: false
+      enabled: true
     # tlsSecret: tls-cert
   ingress:
     enabled: true
