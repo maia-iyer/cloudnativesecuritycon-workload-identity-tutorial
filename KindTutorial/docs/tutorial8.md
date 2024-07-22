@@ -19,7 +19,7 @@ Cleanup the port-forward commands running in the background:
 ```
 KIND_EXPERIMENTAL_PROVIDER=podman kind delete cluster
 podman machine stop
-podman machine delete
+podman machine rm
 ``` 
 TODO there may be something listening to port 80 in the background to be cleaned up
 
