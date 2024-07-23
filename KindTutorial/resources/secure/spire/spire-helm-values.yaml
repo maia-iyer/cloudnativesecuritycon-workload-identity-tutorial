@@ -34,7 +34,7 @@ spiffe-oidc-discovery-provider:
   # the quick fix is to disable the TLS on SPIRE:
   tls:
     spire:
-      enabled: true
+      enabled: false
     # tlsSecret: tls-cert
   ingress:
     enabled: true
