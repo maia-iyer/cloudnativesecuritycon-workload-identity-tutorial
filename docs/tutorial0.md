@@ -47,6 +47,7 @@ Each participant will have access to a cluster of their own to work though the v
 For the live demo, additional information about accessing and interacting with the environment can be found in the first link below. To run the demo locally on Kind, the instructions for setting up the environment are in the second link below
 
 [Next Tutorial - Environment Access for Live Tutorial](tutorial1a.md)
+
 [Next Tutorial - Environment Setup on Kind](tutorial1b.md)
 
 [Home](../README.md)
