@@ -21,7 +21,7 @@ Please install the following utilities:
 Bob's application and the remainder of the resources associated with the tutorial are located in the accompanying git repository. Navigate to the directory you wish to work in and run the following: 
 
 ```shell
-cd $TUTORIAL_ROOT
+export TUTORIAL_ROOT=$(pwd)
 git clone https://github.com/sabre1041/cloudnativesecuritycon-workload-identity-tutorial
 ```
 
