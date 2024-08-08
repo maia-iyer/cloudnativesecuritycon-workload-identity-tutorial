@@ -68,5 +68,3 @@ spec:
             value: "true"
           - name: HOME
             value: "/tmp"
-          - name: VAULT_SKIP_VERIFY
-            value: "true"
