@@ -80,8 +80,8 @@ A value similar to `x.xxx.xxx.xxx.nip.io` indicates the variable has been set pr
 We will also use a local self-signed certificate to secure the TLS connections of these applications and deploy the ingress controller:
 
 ```shell
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout wildcard-tls.key -out wildcard-tls.crt -subj "/CN=*.$APP_DOMAIN/O=Red Hat" -addext "subjectAltName=DNS:*.$APP_DOMAIN"
-kubectl create secret tls wildcard-tls-secret --key wildcard-tls.key --cert wildcard-tls.crt
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout $TUTORIAL_ROOT/wildcard-tls.key -out $TUTORIAL_ROOT/wildcard-tls.crt -subj "/CN=*.$APP_DOMAIN/O=Red Hat" -addext "subjectAltName=DNS:*.$APP_DOMAIN"
+kubectl create secret tls wildcard-tls-secret --key $TUTORIAL_ROOT/wildcard-tls.key --cert $TUTORIAL_ROOT/wildcard-tls.crt
 kubectl apply -f $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/resources/cluster/kind-ingress-deployment.yaml
 ```
 
