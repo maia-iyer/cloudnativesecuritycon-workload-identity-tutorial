@@ -28,6 +28,12 @@ Next, obtain the location of the Vault instance and set the `VAULT_ADDR` environ
 export VAULT_ADDR=https://vault-vault.$APP_DOMAIN
 ```
 
+> **Kind:**
+> For Kind users, we must set the `VAULT_CAPATH` variable to use our self-signed certificate
+> ```shell
+> export VAULT_CAPATH=$TUTORIAL_ROOT/wildcard-tls.crt
+> ```
+
 Confirm that the Vault health endpoint returns a successful response choosing one of the below: 
 
 > **OpenShift:**
@@ -69,12 +75,6 @@ Obtain a token for accessing the Vault instance by setting the `ROOT_TOKEN` envi
 
 ```shell
 export ROOT_TOKEN=$(kubectl -n vault logs $(kubectl -n vault get po | grep vault-| awk '{print $1}') | grep Root | cut -d' ' -f3); echo "export ROOT_TOKEN=$ROOT_TOKEN"
-```
-
-Login to Vault using the CLI
-
-```shell
-vault login -no-print "${ROOT_TOKEN}"
 ```
 
 A script is available to automate the configuration of Vault to support accessing resources in Vault. Specifically, the script performs the following activities:
