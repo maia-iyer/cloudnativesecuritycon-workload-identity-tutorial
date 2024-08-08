@@ -28,11 +28,17 @@ Next, obtain the location of the Vault instance and set the `VAULT_ADDR` environ
 export VAULT_ADDR=https://vault-vault.$APP_DOMAIN
 ```
 
-Confirm that the Vault health endpoint returns a successful response
+Confirm that the Vault health endpoint returns a successful response choosing one of the below: 
 
-```
-curl  $VAULT_ADDR/v1/sys/health | jq
-```
+> **OpenShift:**
+> ```shell
+> curl  $VAULT_ADDR/v1/sys/health | jq
+> ```
+
+> **Kind:**
+> ```shell
+> curl --cacert $TUTORIAL_ROOT/wildcard-tls.crt $VAULT_ADDR/v1/sys/health | jq
+> ```
 
 A response similar to the following indicates Vault is running and healthy
 
