@@ -77,11 +77,17 @@ A script is available to automate the configuration of Vault to support accessin
 2. Creates a Policy allowing read access to contents stored within the `secret/data/db-config/*` Vault path
 3. Creates a Role that enables workloads running in the `workload-identity-tutorial` namespace the ability to authenticate to vault and access resources defined by the aforementioned Policy
 
-Enable these configurations by executing the script called `vault-oidc.sh`
+We can enable these configurations by executing a script. Choose one of the below based on your environment:
 
-```shell
-$TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/resources/secure/vault/vault-oidc.sh
-```
+> **OpenShift:**
+> ```shell
+> $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/resources/secure/vault/vault-oidc.sh
+> ```
+
+> **Kind:**
+> ```shell
+> $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/resources/secure/vault/vault-oidc-kind.sh
+> ```
 
 Confirm the policy called `dbpolicy` has been pushed to Vault:
 
