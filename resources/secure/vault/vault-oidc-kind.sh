@@ -28,7 +28,7 @@ HELPMEHELPME
 
 setupVault()
 {
-  vault login -no-print "${ROOT_TOKEN}"
+  vault login -tls-skip-verify -no-print "${ROOT_TOKEN}"
   RT=$?
   if [ $RT -ne 0 ] ; then
      echo "ROOT_TOKEN is not correctly set"
