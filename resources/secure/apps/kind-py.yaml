@@ -38,7 +38,7 @@ spec:
           imagePullPolicy: Always
           command: ["/bin/sh", "-c"]
           args:
-            - 'echo "-k" > ~/.curlrc && /user/local/bin/run-sidecar-bash.sh /usr/local/bin/inputfile.txt'
+            - 'echo "-k" > ~/.curlrc && /usr/local/bin/run-sidecar-bash.sh /usr/local/bin/inputfile.txt'
           env:
           - name: SOCKETFILE
             value: "/run/spire/sockets/spire-agent.sock"
