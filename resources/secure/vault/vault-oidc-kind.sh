@@ -9,7 +9,6 @@ VAULT_ADDR=${VAULT_ADDR:-$3}
 export VAULT_ADDR=$VAULT_ADDR
 export ROOT_TOKEN=$ROOT_TOKEN
 export OIDC_URL=https://oidc-discovery.${APP_DOMAIN}
-export VAULT_SKIP_VERIFY=true
 # remove any previously set VAULT_TOKEN, that overrides ROOT_TOKEN in Vault client
 export VAULT_TOKEN=
 
