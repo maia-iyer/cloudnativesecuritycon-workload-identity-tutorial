@@ -42,6 +42,12 @@ Obtain a remote shell in the pod created by the `spire-debug` Deployment using t
 kubectl -n workload-identity-tutorial exec -it $(kubectl -n workload-identity-tutorial get pod -l=app=spire-debug -o jsonpath='{ .items[*].metadata.name}') -- bash
 ```
 
+> **Kind:**
+> We will be running curl commands. Because we are using self-signed certificate, we must put the -k for all our curl commands:
+> ```shell
+> echo "-k" > ~/.curlrc
+> ```
+
 Once inside the container, A SPIFFE identity can be obtained using the `spire-agent` CLI which is included within the container. The location SPIRE socket within the container is exposed via the `SOCKETFILE` environment variable.
 
 Execute the following command to obtain a JWT using the `spire-agent` CLI
@@ -95,9 +101,15 @@ The subject field represents the workload specifically and can be broken down in
 
 With an understanding of how JWT's cant be obtained from SPIRE and their composition, use the JWT stored in the `IDENTITY_TOKEN` environment variable to obtain an access token from Vault:
 
-```shell
-curl --max-time 10 -s --request POST --data '{ "jwt": "'"${IDENTITY_TOKEN}"'", "role": "'"${ROLE}"'"}' "${VAULT_ADDR}"/v1/auth/jwt/login | jq
-```
+> **OpenShift:**
+> ```shell
+> curl --max-time 10 -s --request POST --data '{ "jwt": "'"${IDENTITY_TOKEN}"'", "role": "'"${ROLE}"'"}' "${VAULT_ADDR}"/v1/auth/jwt/login | jq
+> ```
+
+> **Kind:**
+> ```shell
+> curl --max-time 10 -sk --request POST --data '{ "jwt": "'"${IDENTITY_TOKEN}"'", "role": "'"${ROLE}"'"}' "${VAULT_ADDR}"/v1/auth/jwt/login | jq
+> ```
 
 Inspect the contents of the returned access token. In particular note the `dbpolicy` is included in the `policies` property and the `dbrole` is defined under the `metadata` property which are both underneath the `auth` property confirming that the JWT token that was obtained from SPIRE is mapping properly in value.
 
@@ -105,9 +117,15 @@ The components that connect both SPIFFE and Vault in the JWT are the `iss` and `
 
 Set the `VAULT_TOKEN` environment variable to represent that access token:
 
-```shell
-VAULT_TOKEN=$(curl --max-time 10 -s --request POST --data '{ "jwt": "'"${IDENTITY_TOKEN}"'", "role": "'"${ROLE}"'"}' "${VAULT_ADDR}"/v1/auth/jwt/login | jq -r  '.auth.client_token')
-```
+> **OpenShift:**
+> ```shell
+> VAULT_TOKEN=$(curl --max-time 10 -s --request POST --data '{ "jwt": "'"${IDENTITY_TOKEN}"'", "role": "'"${ROLE}"'"}' "${VAULT_ADDR}"/v1/auth/jwt/login | jq -r  '.auth.client_token')
+> ```
+
+> **Kind:**
+> ```shell
+> VAULT_TOKEN=$(curl --max-time 10 -sk --request POST --data '{ "jwt": "'"${IDENTITY_TOKEN}"'", "role": "'"${ROLE}"'"}' "${VAULT_ADDR}"/v1/auth/jwt/login | jq -r  '.auth.client_token')
+> ```
 
 ### Obtaining Secrets Stored in Vault
 
