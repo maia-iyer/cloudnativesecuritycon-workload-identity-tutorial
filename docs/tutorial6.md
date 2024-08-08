@@ -101,15 +101,9 @@ The subject field represents the workload specifically and can be broken down in
 
 With an understanding of how JWT's cant be obtained from SPIRE and their composition, use the JWT stored in the `IDENTITY_TOKEN` environment variable to obtain an access token from Vault:
 
-> **OpenShift:**
-> ```shell
-> curl --max-time 10 -s --request POST --data '{ "jwt": "'"${IDENTITY_TOKEN}"'", "role": "'"${ROLE}"'"}' "${VAULT_ADDR}"/v1/auth/jwt/login | jq
-> ```
-
-> **Kind:**
-> ```shell
-> curl --max-time 10 -sk --request POST --data '{ "jwt": "'"${IDENTITY_TOKEN}"'", "role": "'"${ROLE}"'"}' "${VAULT_ADDR}"/v1/auth/jwt/login | jq
-> ```
+```shell
+curl --max-time 10 -s --request POST --data '{ "jwt": "'"${IDENTITY_TOKEN}"'", "role": "'"${ROLE}"'"}' "${VAULT_ADDR}"/v1/auth/jwt/login | jq
+```
 
 Inspect the contents of the returned access token. In particular note the `dbpolicy` is included in the `policies` property and the `dbrole` is defined under the `metadata` property which are both underneath the `auth` property confirming that the JWT token that was obtained from SPIRE is mapping properly in value.
 
@@ -117,15 +111,9 @@ The components that connect both SPIFFE and Vault in the JWT are the `iss` and `
 
 Set the `VAULT_TOKEN` environment variable to represent that access token:
 
-> **OpenShift:**
-> ```shell
-> VAULT_TOKEN=$(curl --max-time 10 -s --request POST --data '{ "jwt": "'"${IDENTITY_TOKEN}"'", "role": "'"${ROLE}"'"}' "${VAULT_ADDR}"/v1/auth/jwt/login | jq -r  '.auth.client_token')
-> ```
-
-> **Kind:**
-> ```shell
-> VAULT_TOKEN=$(curl --max-time 10 -sk --request POST --data '{ "jwt": "'"${IDENTITY_TOKEN}"'", "role": "'"${ROLE}"'"}' "${VAULT_ADDR}"/v1/auth/jwt/login | jq -r  '.auth.client_token')
-> ```
+```shell
+VAULT_TOKEN=$(curl --max-time 10 -s --request POST --data '{ "jwt": "'"${IDENTITY_TOKEN}"'", "role": "'"${ROLE}"'"}' "${VAULT_ADDR}"/v1/auth/jwt/login | jq -r  '.auth.client_token')
+```
 
 ### Obtaining Secrets Stored in Vault
 
