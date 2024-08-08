@@ -19,16 +19,16 @@ With the Helm charts installed locally, deploy the Kubernetes Custom Resource De
 helm upgrade --install --create-namespace -n spire-mgmt spire-crds $TUTORIAL_ROOT/helm-charts-hardened/charts/spire-crds
 ```
 
-A custom set of Helm values is available in a file located at `$TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/demo/secure/spire-helm-values.yaml`. Feel free to inspect the contents to observe some of the configurations that are being applied.
+We will now deploy the SPIRE Helm chart. Choose one of the below based on your environment:
 
-In OpenShift, deploy the `spire` Helm chart with the custom Values file using the following command:
-
+> **OpenShift:**
+> The custom set of Helm values is available in the file at `$TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/demo/secure/spire-helm-values.yaml`. Feel free to inspect the contents to observe some of the configurations that are being applied.
 > ```shell
 > helm upgrade --install --create-namespace -n spire-mgmt spire $TUTORIAL_ROOT/helm-charts-hardened/charts/spire -f $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/resources/secure/spire/spire-helm-values.yaml --set global.spire.namespaces.create=true --set global.spire.trustDomain=$APP_DOMAIN --values $TUTORIAL_ROOT/helm-charts-hardened/examples/tornjak/values.yaml --values $TUTORIAL_ROOT/helm-charts-hardened/examples/tornjak/values-ingress.yaml --render-subchart-notes --debug
 > ```
 
-Otherwise, in Kind, deploy the `spire` Helm chart with the following command:
-
+> **Kind:**
+> The custom set of Helm values is available in the file at `$TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/demo/secure/spire-helm-kind-values.yaml`. Feel free to inspect the contents to observe some of the configurations that are being applied.
 > ```shell
 > helm upgrade --install --create-namespace -n spire-mgmt spire $TUTORIAL_ROOT/helm-charts-hardened/charts/spire -f $TUTORIAL_ROOT/cloudnativesecuritycon-workload-identity-tutorial/resources/secure/spire/spire-helm-kind-values.yaml --set global.spire.namespaces.create=true --set global.spire.trustDomain=$APP_DOMAIN --values $TUTORIAL_ROOT/helm-charts-hardened/examples/tornjak/values.yaml --values $TUTORIAL_ROOT/helm-charts-hardened/examples/tornjak/values-ingress.yaml --render-subchart-notes --debug
 > ```
