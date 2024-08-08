@@ -79,6 +79,9 @@ echo https://$(kubectl -n workload-identity-tutorial get ingress py -o jsonpath=
 
 Open a web browser and navigate to the URL provided as an output from the previous command. A result similar to the following containing a table populated with movie titles indicates the deployment was successful.
 
+> [!NOTE]
+> You may need to "Accept Risk and Continue" if you are working with the local Kind deployment, as we are using a self-signed certificate. 
+
 ![Python Application](images/baseline-app.png)
 
 Kaya is happy to see that she was able to successfully deploy Bob's application to the Kubernetes cluster. In the next tutorial exercise, Kaya will work with Bob to identify the security challenges currently present within the application and an approach to harden the posture of the application as it relates to security moving forward.
